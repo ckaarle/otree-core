@@ -276,9 +276,12 @@ class AnyModel(DeclarativeBase):
 
     @classmethod
     def get_folder_name(cls):
-        logger.error(cls.__module__)
-        name = cls.__module__.split('.')[-2]
-        return name
+        try:
+            name = cls.__module__.split('.')[-2]
+            return name
+        except Exception as e:
+            raise Exception(cls.__module__) from e
+        #return name
 
     def _clone(self):
         return type(self).objects_get(id=self.id)
