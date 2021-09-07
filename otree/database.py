@@ -276,7 +276,7 @@ class AnyModel(DeclarativeBase):
 
     @classmethod
     def get_folder_name(cls):
-        logger.info(cls.__module__)
+        logger.error(cls.__module__)
         name = cls.__module__.split('.')[-2]
         return name
 
